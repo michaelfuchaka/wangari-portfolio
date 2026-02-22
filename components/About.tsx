@@ -41,12 +41,14 @@ export default function About() {
           color: 'var(--ivory)',
           lineHeight: 1.75,
         }}>
-          "All that I am is as a result of the{' '}
-          <em style={{ color: 'var(--gold)', fontStyle: 'normal' }}>mercies of God,</em>
-          <br />
-          without which I am nothing."
-        </blockquote>
+          {`"All that I am is as a result of the `}
+        <em style={{ color: 'var(--gold)', fontStyle: 'normal' }}>mercies of God,</em>
+        <br />
+        {`without which I am nothing."`}
+                </blockquote>
       </div>
     </section>
   )
 }
+
+
