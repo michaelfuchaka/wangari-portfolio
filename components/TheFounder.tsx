@@ -8,14 +8,14 @@ export default function TheFounder() {
   const bene = useReveal()
 
   return (
-    <div id="founder" style={{ borderTop: '1px solid var(--gold-border)' }}>
-      <div style={{
+   <div id="founder" style={{ borderTop: '1px solid var(--gold-border)', position: 'relative' }}>
+      <div className="founder-grid" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         minHeight: '80vh',
       }}>
 
-        <div style={{
+        <div className="founder-text" style={{
           padding: '100px 80px 100px 60px',
           display: 'flex',
           flexDirection: 'column',
@@ -24,6 +24,7 @@ export default function TheFounder() {
 
           <div
             ref={label.ref}
+             className="founder-label"
             style={{
               opacity: label.visible ? 1 : 0,
               transition: 'opacity 0.8s ease',
@@ -98,9 +99,9 @@ export default function TheFounder() {
         </div>
 
         
-        <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <div className="founder-image" style={{ position: 'relative', overflow: 'hidden' }}>
         
-          <Image src="/images/founder.jpg" alt="Wangari" fill style={{ objectFit:'cover', objectPosition:'center top', filter:'grayscale(100%) contrast(1.05)' }} />
+          <Image src="/images/founder.jpg" alt="Wangari" fill style={{ objectFit:'cover', objectPosition:'center 20%', filter:'grayscale(100%) contrast(1.05)' }} />
 
         
           
@@ -112,6 +113,36 @@ export default function TheFounder() {
         </div>
 
       </div>
+      <style>{`
+  @media (max-width: 768px) {
+    .founder-grid {
+      grid-template-columns: 1fr !important;
+      position: relative;
+      min-height: 100vh;
+    }
+    .founder-image {
+      position: absolute !important;
+      top: 0; left: 0;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .founder-image > div {
+      background: linear-gradient(to top, #0D1B2A 30%, rgba(13,27,42,0.1) 70%) !important;
+    }
+    .founder-text {
+      position: relative;
+      z-index: 1;
+      padding-top: 52vh !important;
+    }
+   .founder-label {
+  position: absolute !important;
+  top: -60px;
+  left: 24px;
+  z-index: 2;
+}
+  }
+`}</style>
     </div>
+    
   )
 }

@@ -13,7 +13,7 @@ export default function TheWoman() {
       id="the-woman"
       style={{
         borderTop: '1px solid var(--gold-border)',
-        padding: '120px 60px',
+        padding: 'clamp(60px, 10vw, 120px) clamp(24px, 6vw, 60px)',
         maxWidth: '1400px',
         margin: '0 auto',
       }}
@@ -43,7 +43,7 @@ export default function TheWoman() {
       </div>
 
       
-      <div style={{
+      <div className="woman-grid" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         gap: '80px',
@@ -53,6 +53,7 @@ export default function TheWoman() {
        
         <div
           ref={image.ref}
+         className="woman-image" 
           style={{
             position: 'relative',
             overflow: 'hidden',
@@ -61,7 +62,7 @@ export default function TheWoman() {
             transition: 'opacity 1.1s ease, transform 1.1s ease',
           }}
         >
-           <Image src="/images/woman.jpg" alt="Wangari" width={700} height={900} style={{ width:'100%', height:'680px', objectFit:'cover', objectPosition:'center top', filter:'grayscale(100%) contrast(1.05)', display:'block' }} />
+           <Image src="/images/woman.jpg" alt="Wangari" width={700} height={900} style={{ width:'100%', height:'680px', objectFit:'cover', objectPosition:'center 70%', filter:'grayscale(100%) contrast(1.05)', display:'block' }} />
 
                 
           <div style={{
@@ -71,7 +72,7 @@ export default function TheWoman() {
           }} />
         </div>
 
-        <div style={{ paddingTop: '20px' }}>
+       <div className="woman-text" style={{ paddingTop: '20px' }}> 
           <div
             ref={text.ref}
             style={{
@@ -126,6 +127,36 @@ export default function TheWoman() {
           </div>
         </div>
       </div>
+      <style>{`
+  @media (max-width: 768px) {
+    .woman-grid {
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+      position: relative;
+      min-height: 100vh;
+    }
+    .woman-image {
+      position: absolute !important;
+      top: 0; left: 0;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .woman-image img {
+      height: 100% !important;
+    }
+    .woman-image > div {
+     background: linear-gradient(to top, #0D1B2A 30%, rgba(13,27,42,0.1) 70%) !important; 
+    }
+    .woman-text {
+      position: relative;
+      z-index: 1;
+      padding-top: 65vh !important;
+      padding-left: 24px !important;
+  padding-right: 24px !important;
+    }
+  }
+`}</style>
     </section>
+    
   )
 }
