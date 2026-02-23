@@ -10,13 +10,14 @@ export default function Hero() {
       id="hero"
       style={{
         height: '100vh',
+        minHeight: '500px',
         display: 'flex',
         overflow: 'hidden',
         opacity: mounted ? 1 : 0,
         transition: 'opacity 1.8s ease',
       }}
     >
-      {/* LEFT — IMAGE */}
+      
       <div style={{
         width: '50%',
         position: 'relative',
@@ -24,10 +25,9 @@ export default function Hero() {
         flexShrink: 0,
       }}>
     
-        <Image src="/images/hero.jpg" alt="Wangari" fill style={{ objectFit:'cover', objectPosition:'center top', filter:'grayscale(100%) contrast(1.05)' }} priority />
+       <Image src="/images/hero.jpg" alt="Wangari" fill sizes="50vw" style={{ objectFit:'cover', objectPosition:'top center', filter:'grayscale(100%) contrast(1.05)' }} priority />
 
-
-        {/* Gradient bleed into right side */}
+        
         <div style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(to right, transparent 55%, #0D1B2A 100%), linear-gradient(to top, #0D1B2A 0%, transparent 25%)',
@@ -41,7 +41,8 @@ export default function Hero() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        padding: '100px 70px 100px 64px',
+        minHeight: 0,
+       padding: 'clamp(40px, 8vw, 100px) clamp(20px, 4vw, 70px) clamp(40px, 8vw, 100px) clamp(20px, 4vw, 64px)',
         position: 'relative',
       }}>
         {/* Thin left border line */}
@@ -56,7 +57,7 @@ export default function Hero() {
         <h1 style={{
           fontFamily: "'Cormorant Garamond', serif",
           fontWeight: 300,
-          fontSize: 'clamp(60px, 6.5vw, 92px)',
+          fontSize: 'clamp(22px, 5vw, 92px)',
           color: 'var(--gold)',
           letterSpacing: '0.1em',
           lineHeight: 1,
@@ -71,7 +72,7 @@ export default function Hero() {
         <div style={{
           width: '60px', height: '1px',
           background: 'var(--gold)',
-          margin: '28px 0',
+          margin: 'clamp(12px, 3vw, 28px) 0',
           opacity: mounted ? 1 : 0,
           transition: 'opacity 1.2s ease 1s',
         }} />
@@ -81,7 +82,7 @@ export default function Hero() {
           fontFamily: "'Cormorant Garamond', serif",
           fontStyle: 'italic',
           fontWeight: 300,
-          fontSize: 'clamp(20px, 2.2vw, 28px)',
+          fontSize: 'clamp(14px, 4vw, 28px)',
           color: 'var(--ivory)',
           lineHeight: 1.45,
           opacity: mounted ? 1 : 0,
@@ -93,11 +94,11 @@ export default function Hero() {
 
         {/* ROLE */}
         <p style={{
-          marginTop: '36px',
+          marginTop: 'clamp(16px, 3vw, 36px)',       
           fontFamily: "'DM Sans', sans-serif",
-          fontSize: '10px',
           fontWeight: 400,
-          letterSpacing: '0.28em',
+         letterSpacing: '0.08em',
+         fontSize: 'clamp(7px, 1.8vw, 10px)', 
           textTransform: 'uppercase',
           color: 'var(--ivory-dim)',
           opacity: mounted ? 1 : 0,
@@ -107,7 +108,7 @@ export default function Hero() {
           A vision rooted in dignity, intergenerational honor, and national restoration.
         </p>
 
-        {/* SCROLL CUE */}
+        
         <div style={{
           position: 'absolute',
           bottom: '44px',
@@ -133,7 +134,15 @@ export default function Hero() {
           0%, 100% { opacity: 0.4; }
           50% { opacity: 1; }
         }
+
+        @media (max-width: 768px) {
+          #hero > div:first-child {
+            height: 100vh !important;
+            min-height: 400px;
+          }
+        
       `}</style>
+      
     </section>
   )
 }
