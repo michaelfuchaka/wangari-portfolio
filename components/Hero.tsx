@@ -135,13 +135,35 @@ export default function Hero() {
           50% { opacity: 1; }
         }
 
-        @media (max-width: 768px) {
-          #hero > div:first-child {
-            height: 100vh !important;
-            min-height: 400px;
-          }
-        
-      `}</style>
+       @media (max-width: 768px) {
+  #hero {
+    position: relative;
+  }
+  #hero > div:first-child {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0;
+    left: 0;
+  }
+  #hero > div:nth-child(2) {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    padding-top: 60vh !important;
+    position: relative;
+    z-index: 1;
+  }
+  #hero h1 {
+    font-size: 11vw !important;
+  }
+  #hero p:first-of-type {
+    font-size: 6vw !important;
+  }
+  #hero p:last-of-type {
+    font-size: 3vw !important;
+  }
+}
+`}</style>
       
     </section>
   )

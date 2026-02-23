@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+ const [closing, setClosing] = useState(false)
+const closeMenu = () => { setClosing(true); setTimeout(() => { setMenuOpen(false); setClosing(false) }, 280) }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -37,7 +40,7 @@ export default function Nav() {
         
       </a>
 
-      <ul style={{ display: 'flex', gap: '48px', listStyle: 'none' }}>
+      <ul style={{ display: 'flex', gap: '48px', listStyle: 'none' }} className="nav-desktop">
         {[
           { label: 'About', href: '#about' },
           { label: 'Story', href: '#the-woman' },
@@ -64,6 +67,17 @@ export default function Nav() {
           </li>
         ))}
       </ul>
+
+          <button className="nav-hamburger" onClick={() => setMenuOpen(!menuOpen)} style={{ display:'none', flexDirection:'column', gap:'5px', background:'none', border:'none', cursor:'pointer' }}>
+      <span style={{ display:'block', width:'24px', height:'1px', background:'var(--gold)', transition:'all 0.3s', transform: menuOpen ? 'rotate(45deg) translateY(6px)' : 'none' }} />
+      <span style={{ display:'block', width:'24px', height:'1px', background:'var(--gold)', transition:'all 0.3s', opacity: menuOpen ? 0 : 1 }} />
+      <span style={{ display:'block', width:'24px', height:'1px', background:'var(--gold)', transition:'all 0.3s', transform: menuOpen ? 'rotate(-45deg) translateY(-6px)' : 'none' }} />
+    </button>
+    {(menuOpen) && <div style={{position:'fixed', top:0, right:0, height:'100vh', width:'70vw', background:'rgba(13,27,42,0.97)', backdropFilter:'blur(12px)', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'40px', zIndex:99, animation: closing ? 'slideOut 0.3s ease forwards' : 'slideIn 0.3s ease forwards' }}>
+           <button onClick={closeMenu} style={{ position:'absolute', top:'28px', right:'28px', background:'none', border:'none', cursor:'pointer', color:'var(--gold)', fontSize:'20px' }}>✕</button>
+      {[{label:'About',href:'#about'},{label:'Story',href:'#the-woman'},{label:'The Founder',href:'#founder'}].map(l => <a key={l.href} href={l.href} onClick={()=>closeMenu()} style={{ fontFamily:"'Cormorant Garamond', serif", fontSize:'18px', fontWeight:300, letterSpacing:'0.14em', textTransform:'uppercase', color:'var(--ivory)', textDecoration:'none' }}>{l.label}</a>)}
+    </div>}
+    <style>{`.nav-desktop{display:flex} .nav-hamburger{display:none} @media(max-width:768px){.nav-desktop{display:none!important} .nav-hamburger{display:flex!important}} @keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}} @keyframes slideOut{from{transform:translateX(0)}to{transform:translateX(100%)}}`}</style>
     </nav>
   )
 }
