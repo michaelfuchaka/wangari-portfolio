@@ -5,6 +5,7 @@ import Prologue from '@/components/Prologue'
 import TheWoman from '@/components/TheWoman'
 import TheCovering from '@/components/TheCovering'
 import TheFounder from '@/components/TheFounder'
+import ContactInfo from '@/components/ContactInfo'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <TheWoman />
       <TheCovering />
       <TheFounder />
+      <ContactInfo />
       <Footer />
     </main>
   )
