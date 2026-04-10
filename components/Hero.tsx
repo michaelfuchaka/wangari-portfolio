@@ -104,7 +104,7 @@ export default function Hero() {
           opacity: mounted ? 1 : 0,
           transition: 'opacity 1.2s ease 1.5s',
         }}>
-          Founding Secretary General - Daughters of the Nation <br />  <br />
+          Founder of Daughters of the Nation <br />  <br />
           A vision rooted in dignity, intergenerational honor, and national restoration.
         </p>
 
